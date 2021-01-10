@@ -9,7 +9,10 @@ app.context.userData = {
 
 // log
 app.use(async (ctx, next) => {
+  // Do something before the next middleware
   await next();
+
+  // Do something after the next middleware
   const responseTime = ctx.response.get('X-Response-Time');
   console.log(`${ctx.request.method} ${ctx.request.url} - ${responseTime}`);
 })
